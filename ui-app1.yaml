@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       name: ui-app
-  replicas: 1
+  replicas: eee
   template:
     metadata:
       labels:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ui-app
-        image: exastro/epochsampleappui:master.20210708183910
+        image: ddd:ccc
         ports:
         - name: http
           containerPort: 8000
@@ -41,7 +41,7 @@ spec:
     port: 8000
     protocol: TCP
     targetPort: 8000
-    nodePort: 31001
+    nodePort: bbb
   selector:
     name: ui-app
 
@@ -59,6 +59,6 @@ spec:
     port: 8000
     protocol: TCP
     targetPort: 8000
-    nodePort: 32001
+    nodePort: aaa
   selector:
     name: ui-app
