@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       name: api-app
-  replicas: eee
+  replicas: aaa
   template:
     metadata:
       labels:
