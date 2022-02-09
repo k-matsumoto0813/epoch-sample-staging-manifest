@@ -22,7 +22,7 @@ spec:
           protocol: TCP
   strategy:
     blueGreen:
-      activeService: 55555 # ui-app-bluegreen-active
+      activeService:  # ui-app-bluegreen-active
       previewService:  # ui-app-bluegreen-preview
       autoPromotionEnabled: true
       scaleDownDelaySeconds: 120

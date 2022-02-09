@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       name: ui-app
-  replicas: 11111
+  replicas: 
   template:
     metadata:
       labels:

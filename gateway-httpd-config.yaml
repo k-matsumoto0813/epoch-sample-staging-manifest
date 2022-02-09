@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name:  # gateway-httpd-conf
-  namespace:  # exastro-gateway
+  namespace: 33333 # exastro-gateway
 data:
   gateway-httpd.conf: |
     Listen 31181

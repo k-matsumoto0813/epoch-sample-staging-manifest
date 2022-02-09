@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       name: ui-app
-  replicas: 44444
+  replicas: 
   template:
     metadata:
       labels:
@@ -22,7 +22,7 @@ spec:
           protocol: TCP
   strategy:
     blueGreen:
-      activeService: 66666 # ui-app-bluegreen-active
+      activeService:  # ui-app-bluegreen-active
       previewService:  # ui-app-bluegreen-preview
       autoPromotionEnabled: true
       scaleDownDelaySeconds: 120

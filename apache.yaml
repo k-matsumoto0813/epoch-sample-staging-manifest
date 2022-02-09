@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  # apache
+  labels:
+    app:  # apache
+  namespace:  # keycloak
+spec:
+  ports:
+  - name: http
+    port:  # 31181
+    targetPort:  # 31181
+    nodePort:  # 31181
+  selector:
+    name:  # apache
+  #type: LoadBalancer
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  # apache
+  namespace: keycloak
+spec:
+  selector:
+    matchLabels:
+      name: apache
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: apache
+    spec:
+      containers:
+      - name: apache
+        image: centos:7
+        command: ["sh", "-c"]
+        args:
+          - |
+            while(true) do sleep 60; done

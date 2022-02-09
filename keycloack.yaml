@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name:  # keycloak
+  name: 444444 # keycloak
   labels:
-    app:  # keycloak
+    app: 444444 # keycloak
   namespace: keycloak
 spec:
   ports:
   - name: http
     port: 8080
     targetPort: 8080
-    nodePort:  # 31180
+    nodePort: 55555 # 31180
   selector:
     app: keycloak
   #type: LoadBalancer
