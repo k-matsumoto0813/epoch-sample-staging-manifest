@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  # gateway-httpd-conf
+  namespace:  # exastro-gateway
+data:
+  gateway-httpd.conf: |
+    Listen 31181
+
+    <VirtualHost *:31181>
+
+      SSLEngine on
+      SSLCertificateFile /etc/pki/tls/certs/exastro-gateway.pem
+      SSLCertificateKeyFile /etc/pki/tls/private/exastro-gateway.key
+      
+      KeepAlive On
+      OIDCResponseType code
+      OIDCCryptoPassphrase 9GajJRefwz5p2hBvbwzi
+      #OIDCCookieDomain example.com
+      OIDCSSLValidateServer Off
+      OIDCProviderMetadataURL https://10.197.18.159:31182/auth/realms/test-1/.well-known/openid-configuration
+      OIDCPassClaimsAs headers
+      
+      RewriteEngine On
+      RewriteOptions inherit
+      
+      OIDCRedirectURI  https://10.197.18.159:31181/oidc-redirect/
+      OIDCClientID test-client-1
+      OIDCClientSecret b237b8c2-d841-465d-8806-21c21e74b11a
+      <Location />
+          ProxyPass        http://epoch-ui.epoch-system.svc:8000/
+          ProxyPassReverse http://epoch-ui.epoch-system.svc:8000/
+          AuthType openid-connect
+          Require valid-user
+      </Location>
+      <Location /api/>
+          ProxyPass        http://epoch-service-api.epoch-system.svc:8000/
+          ProxyPassReverse http://epoch-service-api.epoch-system.svc:8000/
+          AuthType openid-connect
+          Require valid-user
+      </Location>
+      <Location /favicon.ico>
+          Require all granted
+      </Location>
+    </VirtualHost>

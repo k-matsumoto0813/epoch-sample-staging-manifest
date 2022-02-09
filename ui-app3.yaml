@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       name: ui-app
-  replicas: 1
+  replicas: keycloak
   template:
     metadata:
       labels:
@@ -15,15 +15,15 @@ spec:
     spec:
       containers:
       - name: ui-app
-        image: exastro/epochsampleappui:master.20210708183910
+        image: test:
         ports:
         - name: http
           containerPort: 8000
           protocol: TCP
   strategy:
     blueGreen:
-      activeService: ui-app-bluegreen-active # ui-app-bluegreen-active
-      previewService: ui-app-bluegreen-pre # ui-app-bluegreen-preview
+      activeService: 31180 # ui-app-bluegreen-active
+      previewService: 11111 # ui-app-bluegreen-preview
       autoPromotionEnabled: true
       scaleDownDelaySeconds: 120
 
@@ -41,7 +41,7 @@ spec:
     port: 8000
     protocol: TCP
     targetPort: 8000
-    nodePort: 31001
+    nodePort: 
   selector:
     name: ui-app
 
@@ -59,6 +59,6 @@ spec:
     port: 8000
     protocol: TCP
     targetPort: 8000
-    nodePort: 31001
+    nodePort: 
   selector:
     name: ui-app
