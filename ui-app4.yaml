@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       name: ui-app
-  replicas: 
+  replicas: 2
   template:
     metadata:
       labels:
@@ -22,8 +22,8 @@ spec:
           protocol: TCP
   strategy:
     blueGreen:
-      activeService: ui-app-bluegreen-active
-      previewService: ui-app-bluegreen-preview
+      activeService: ui-app-bluegreen-active # ui-app-bluegreen-active
+      previewService: ui-app-bluegreen-preview # ui-app-bluegreen-preview
       autoPromotionEnabled: true
       scaleDownDelaySeconds: 120
 
@@ -31,7 +31,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ui-app-bluegreen-active
+  name: ui-app-bluegreen-active # ui-app-bluegreen-active
   labels:
     name: ui-app-bluegreen-active
 spec:
@@ -41,7 +41,7 @@ spec:
     port: 8000
     protocol: TCP
     targetPort: 8000
-    nodePort: 
+    nodePort: 31051
   selector:
     name: ui-app
 
