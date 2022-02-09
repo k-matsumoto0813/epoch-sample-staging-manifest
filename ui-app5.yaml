@@ -22,8 +22,8 @@ spec:
           protocol: TCP
   strategy:
     blueGreen:
-      activeService: nginx-deployment # ui-app-bluegreen-active
-      previewService: 2 # ui-app-bluegreen-preview
+      activeService: 55555 # ui-app-bluegreen-active
+      previewService:  # ui-app-bluegreen-preview
       autoPromotionEnabled: true
       scaleDownDelaySeconds: 120
 

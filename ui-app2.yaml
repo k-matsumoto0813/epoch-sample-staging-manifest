@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       name: ui-app
-  replicas: gateway-httpd-conf
+  replicas: 22222
   template:
     metadata:
       labels:
@@ -15,14 +15,14 @@ spec:
     spec:
       containers:
       - name: ui-app
-        image: test:aaaaaaaa
+        image: :
         ports:
         - name: http
           containerPort: 8000
           protocol: TCP
   strategy:
     blueGreen:
-      activeService:  exastro-gateway # ui-app-bluegreen-active
+      activeService:  33333 # ui-app-bluegreen-active
       previewService: ui-app-bluegreen-preview
       autoPromotionEnabled: true
       scaleDownDelaySeconds: 120
@@ -41,7 +41,7 @@ spec:
     port: 8000
     protocol: TCP
     targetPort: 8000
-    nodePort: 111111
+    nodePort: 
   selector:
     name: ui-app
 
