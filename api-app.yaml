@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       name: api-app
-  replicas: 
+  replicas: 2
   template:
     metadata:
       labels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-app
-        image: :main.20220308-134026
+        image: matsumoto0813/epoch-sample-api:main.20220308-134026
         ports:
         - name: http
           containerPort: 8000
