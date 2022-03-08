@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       name: api-app
-  replicas: 
+  replicas: 2
   template:
     metadata:
       labels:
@@ -47,7 +47,7 @@ spec:
     port: 8000
     protocol: TCP
     targetPort: 8000
-    nodePort: 
+    nodePort: 31002
   selector:
     name: api-app
 
@@ -65,6 +65,6 @@ spec:
     port: 8000
     protocol: TCP
     targetPort: 8000
-    nodePort: 
+    nodePort: 32002
   selector:
     name: api-app
